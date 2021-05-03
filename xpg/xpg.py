@@ -187,8 +187,11 @@ class MarcoXpG(object):
             :return: one abductive explanation,
                         each element in the return Axp is a feature index.
         """
-
-        return self.axp.explain(self.xpg, fixed)
+        if fixed:
+            fix = fixed.copy()
+        else:
+            fix = None
+        return self.axp.explain(self.xpg, fix)
 
 
     def find_cxp(self, universal=None):
@@ -199,8 +202,11 @@ class MarcoXpG(object):
             :return: one contrastive explanation,
                         each element in the return Cxp is a feature index.
         """
-
-        return self.cxp.explain(self.xpg, universal)
+        if universal:
+            univ = universal.copy()
+        else:
+            univ = None
+        return self.cxp.explain(self.xpg, univ)
 
     def enum(self):
         """
