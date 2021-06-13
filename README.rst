@@ -188,7 +188,8 @@ Please cite the following paper when you use this work:
                Alexey Ignatiev and
                Jo{\~{a}}o Marques{-}Silva},
   title     = {On Efficiently Explaining Graph-Based Classifiers},
-  journal   = {CoRR}
+  journal   = {arXiv preprint arXiv:2106.01350}
+  year      = {2021}
   }
 
 
