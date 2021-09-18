@@ -1,4 +1,4 @@
-from xpg.member import FeatureMembership
+from xpg.membership import FeatureMembership
 from xpg import XpGraph,MarcoXpG
 
 
