@@ -20,6 +20,32 @@ import numpy as np
 
 #
 # ==============================================================================
+def check_one_axp(xpg, axp):
+    """
+        Check if given axp is an AXp.
+
+        :param xpg: xpg model.
+        :param axp: potential abductive explanation.
+        :return: true if given axp is an AXp
+                    else false.
+    """
+    univ = [True] * xpg.nv
+    for i in axp:
+        univ[i] = not univ[i]
+
+    if xpg.path_to_zero(univ):
+        return False
+
+    for i in range(len(univ)):
+        if not univ[i]:
+            univ[i] = not univ[i]
+            if xpg.path_to_zero(univ):
+                univ[i] = not univ[i]
+            else:
+                return False
+    return True
+
+
 class XpGraph(object):
     """
         eXplanation Graph model, an abstract model of graph-based classifier.
