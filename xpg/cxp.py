@@ -19,12 +19,12 @@ class Contrastive:
         self.features = features
         self.verbose = verb
 
-    def explain(self, xpg, universal=None):
+    def explain(self, xpg, univ=None):
         """
             Compute one contrastive explanation (CXp).
 
             :param xpg: given an XpGraph
-            :param universal: a list of features declared as universal.
+            :param univ: a list of features declared as universal.
             :return: one contrastive explanation,
                         each element in the return CXp is a feature index.
         """
@@ -32,13 +32,8 @@ class Contrastive:
         time = resource.getrusage(resource.RUSAGE_CHILDREN).ru_utime + \
                resource.getrusage(resource.RUSAGE_SELF).ru_utime
 
-        if not universal:
-            path = xpg.decision_path()
+        if not univ:
             univ = [True for _ in range(xpg.nv)]
-            for n in path[:-1]:
-                univ[xpg.graph.nodes[n]['var']] = False
-        else:
-            univ = universal
 
         for i in range(len(univ)):
             # simple deletion-based linear search
